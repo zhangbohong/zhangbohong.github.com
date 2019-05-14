@@ -123,18 +123,18 @@
 
 
 
-<meta name="description" content="Redis学习笔记  入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
+<meta name="description" content="入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis学习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/04/18/Redis学习笔记/index.html">
 <meta property="og:site_name" content="小兵张尕的博客">
-<meta property="og:description" content="Redis学习笔记  入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
+<meta property="og:description" content="入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-14T14:42:26.577Z">
+<meta property="og:updated_time" content="2019-05-14T15:57:22.754Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis学习笔记">
-<meta name="twitter:description" content="Redis学习笔记  入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
+<meta name="twitter:description" content="入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
 
 
 
@@ -400,7 +400,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  861 字
+                  1.2k 字
                 </span>
               
 
@@ -416,7 +416,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -437,9 +437,7 @@
       
 
       
-        <center>Redis学习笔记</center>
-
-<h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a><center>入门</center></h1><h2 id="1、获得符合规则的键名列表"><a href="#1、获得符合规则的键名列表" class="headerlink" title="1、获得符合规则的键名列表"></a>1、获得符合规则的键名列表</h2><blockquote>
+        <h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a><center>入门</center></h1><h2 id="1、获得符合规则的键名列表"><a href="#1、获得符合规则的键名列表" class="headerlink" title="1、获得符合规则的键名列表"></a>1、获得符合规则的键名列表</h2><blockquote>
 <p>KEYS pattern</p>
 </blockquote>
 <p>pattern支持glob通配符格式，见下表</p>
@@ -505,6 +503,49 @@
 <p><strong>注意：事务中的命令是exec之后才执行的，所以在MULTI命令之后是可以修改WATCH监控的值的，但是如果事务之前修改过WATCH监控的键值的话，之后的MULTI命令则不会修改。</strong></p>
 <h2 id="2、过期时间"><a href="#2、过期时间" class="headerlink" title="2、过期时间"></a>2、过期时间</h2><p>expire key second 设置key的存活时间，单位是秒；</p>
 <p>TTL可以查看一个键还有多长时间被删除，当键不存在返回-2，没有设置过期时间返回-1；</p>
+<blockquote>
+<p>  在2.6版本中，无论键不存在还是没有设置过期时间都是返回-1，知道2.8版本之后在区分两种情况。<br>PERSIST：取消键的过期时间，或者用SET或GETSET命令为键复制也会清除键的过期时间；</p>
+</blockquote>
+<h2 id="3、-缓存"><a href="#3、-缓存" class="headerlink" title="3、 缓存"></a>3、 缓存</h2><p>修改配置文件中的maxmemory参数，限制Redis最大可用内存大小（单位是字节），当超出了这个限制时，Redis会根据maxmemory-policy参数制定的策略来删除不需要的键知道Redis占用的内存小于指定内存</p>
+<p>maxmemory-policy支持的规则如下，其中的LRU（Least Recently Used）算法即“最近最少使用”</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">规则</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">volatile-lru</td>
+<td style="text-align:left">使用LRU算法删除一个键（只对设置了过期时间的键）</td>
+</tr>
+<tr>
+<td style="text-align:left">allkeys-lru</td>
+<td style="text-align:left">使用LRU算法删除一个键</td>
+</tr>
+<tr>
+<td style="text-align:left">volatile-random</td>
+<td style="text-align:left">随机删除 一个键（只对设置了过期时间的键）</td>
+</tr>
+<tr>
+<td style="text-align:left">allkeys-random</td>
+<td style="text-align:left">随机删除一个键</td>
+</tr>
+<tr>
+<td style="text-align:left">volatile-ttl</td>
+<td style="text-align:left">删除过期时间最近的一个键</td>
+</tr>
+<tr>
+<td style="text-align:left">noeviction</td>
+<td style="text-align:left">不删除键，只返回错误</td>
+</tr>
+</tbody>
+</table>
+<p>如当maxmemory-policy设置为allkeys-lru时，一旦Redis占用的内存超过了限制值，Redis会不断的删除数据库中最近最少使用的键，知道占用的内存小于限制值。</p>
+<blockquote>
+<p>  事实上Redis 并不会准确的删除整个数据库中最久未被使用的键，而是每次从数据库中随机取3个键并删除这3个键中最久未被使用的键。3这个数字可以通过Redis配置文件中的maxmemory-samples参数设置。</p>
+</blockquote>
 
       
     </div>
@@ -715,7 +756,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、获得符合规则的键名列表"><span class="nav-number">1.1.</span> <span class="nav-text">1、获得符合规则的键名列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、redis数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">2、redis数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-字符串类型"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-散列类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 散列类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-列表类型"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 列表类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-集合类型"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-有序集合类型"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 有序集合类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶"><span class="nav-number">2.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、redis事务"><span class="nav-number">2.1.</span> <span class="nav-text">1、redis事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-命令"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-错误处理"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 错误处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-WATCH-命令"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 WATCH 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、过期时间"><span class="nav-number">2.2.</span> <span class="nav-text">2、过期时间</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、获得符合规则的键名列表"><span class="nav-number">1.1.</span> <span class="nav-text">1、获得符合规则的键名列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、redis数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">2、redis数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-字符串类型"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-散列类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 散列类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-列表类型"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 列表类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-集合类型"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-有序集合类型"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 有序集合类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶"><span class="nav-number">2.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、redis事务"><span class="nav-number">2.1.</span> <span class="nav-text">1、redis事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-命令"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-错误处理"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 错误处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-WATCH-命令"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 WATCH 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、过期时间"><span class="nav-number">2.2.</span> <span class="nav-text">2、过期时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、-缓存"><span class="nav-number">2.3.</span> <span class="nav-text">3、 缓存</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -749,7 +790,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.2k</span>
+    <span title="Site words total count">1.6k</span>
   
 </div>
 
