@@ -123,20 +123,18 @@
 
 
 
-<meta name="description" content="Redis学习笔记  入门 1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?    2">
+<meta name="description" content="Redis学习笔记  入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis学习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/04/18/Redis学习笔记/index.html">
 <meta property="og:site_name" content="小兵张尕的博客">
-<meta property="og:description" content="Redis学习笔记  入门 1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?    2">
+<meta property="og:description" content="Redis学习笔记  入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zbh-blog.oss-cn-beijing.aliyuncs.com/601557239093_.pic_hd.jpg">
-<meta property="og:updated_time" content="2019-05-12T07:22:46.671Z">
+<meta property="og:updated_time" content="2019-05-14T14:28:28.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis学习笔记">
-<meta name="twitter:description" content="Redis学习笔记  入门 1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?    2">
-<meta name="twitter:image" content="https://zbh-blog.oss-cn-beijing.aliyuncs.com/601557239093_.pic_hd.jpg">
+<meta name="twitter:description" content="Redis学习笔记  入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
 
 
 
@@ -402,7 +400,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  406 字
+                  861 字
                 </span>
               
 
@@ -418,7 +416,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -441,8 +439,7 @@
       
         <center>Redis学习笔记</center>
 
-<h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><p><img src="https://zbh-blog.oss-cn-beijing.aliyuncs.com/601557239093_.pic_hd.jpg" alt="张掖-丹霞地貌"></p>
-<h2 id="1、获得符合规则的键名列表"><a href="#1、获得符合规则的键名列表" class="headerlink" title="1、获得符合规则的键名列表"></a>1、获得符合规则的键名列表</h2><blockquote>
+<h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><h2 id="1、获得符合规则的键名列表"><a href="#1、获得符合规则的键名列表" class="headerlink" title="1、获得符合规则的键名列表"></a>1、获得符合规则的键名列表</h2><blockquote>
 <p>KEYS pattern</p>
 </blockquote>
 <p>pattern支持glob通配符格式，见下表</p>
@@ -472,6 +469,7 @@
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <h2 id="2、redis数据类型"><a href="#2、redis数据类型" class="headerlink" title="2、redis数据类型"></a>2、redis数据类型</h2><h3 id="2-1-字符串类型"><a href="#2-1-字符串类型" class="headerlink" title="2.1 字符串类型"></a>2.1 字符串类型</h3><h3 id="2-2-散列类型"><a href="#2-2-散列类型" class="headerlink" title="2.2 散列类型"></a>2.2 散列类型</h3><h3 id="2-3-列表类型"><a href="#2-3-列表类型" class="headerlink" title="2.3 列表类型"></a>2.3 列表类型</h3><ul>
 <li>LPUSH ： 向列表左边插入元素</li>
 <li>RPUSH ：向列表右边插入元素</li>
@@ -497,6 +495,16 @@
 <li>SINTERSTORE 和 SUNIONSTORE 命令与之类似</li>
 <li>SRANGMEMBER ： 随机获取集合中的一个元素<br>- <h3 id="2-5-有序集合类型"><a href="#2-5-有序集合类型" class="headerlink" title="2.5 有序集合类型"></a>2.5 有序集合类型</h3></li>
 </ul>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h2 id="1、redis事务"><a href="#1、redis事务" class="headerlink" title="1、redis事务"></a>1、redis事务</h2><h3 id="1-1-命令"><a href="#1-1-命令" class="headerlink" title="1.1 命令"></a>1.1 命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MULIT // 事务开始</span><br><span class="line">SADD &quot;user:1&quot; 2</span><br><span class="line">SADD &quot;user:2&quot; 1</span><br><span class="line">EXEC  // 事务结束</span><br></pre></td></tr></table></figure>
+<p>MULIT命令告诉Redis，我下面发给你的命令属于一个事务，你先不要执行，而是把它们暂存起来，当使用EXEC时，Redis会将等待执行的事务队列中的命令按发送顺序执行，返回值顺序和命令顺序相同。</p>
+<h3 id="1-2-错误处理"><a href="#1-2-错误处理" class="headerlink" title="1.2 错误处理"></a>1.2 错误处理</h3><ol>
+<li>语法错误：Redis2.6.5之前的版本会忽略语法错误的命令，然后执行事务中的其他命令；之后的版本只要有一个命令有语法错误，执行EXEC命令后Redis会直接返回错误，连语法正确的命令也不会执行。</li>
+<li>运行错误：假如用散列类型的命令操作集合类型的键，这种错误在实际执行前Redis是无法发现的，所以事务里的这种命令是会被Redis接受执行的。如果事务里的一条命令出现了运行错误，那么其他包括出错命令之后的命令依然会被执行。</li>
+</ol>
+<h3 id="1-3-WATCH-命令"><a href="#1-3-WATCH-命令" class="headerlink" title="1.3 WATCH 命令"></a>1.3 WATCH 命令</h3><p>watch命令可以监控一个或多个键，一旦其中有任意一个键被删除，之后的事务就不会被执行。监控一直持续到EXEC命令。</p>
+<p><strong>注意：事务中的命令是exec之后才执行的，所以在MULTI命令之后是可以修改WATCH监控的值的，但是如果事务之前修改过WATCH监控的键值的话，之后的MULTI命令则不会修改。</strong></p>
+<h2 id="2、过期时间"><a href="#2、过期时间" class="headerlink" title="2、过期时间"></a>2、过期时间</h2><p>expire key second 设置key的存活时间，单位是秒；</p>
+<p>TTL可以查看一个键还有多长时间被删除，当键不存在返回-2，没有设置过期时间返回-1；</p>
 
       
     </div>
@@ -703,7 +711,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、获得符合规则的键名列表"><span class="nav-number">1.1.</span> <span class="nav-text">1、获得符合规则的键名列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、redis数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">2、redis数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-字符串类型"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-散列类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 散列类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-列表类型"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 列表类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-集合类型"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-有序集合类型"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 有序集合类型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、获得符合规则的键名列表"><span class="nav-number">1.1.</span> <span class="nav-text">1、获得符合规则的键名列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、redis数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">2、redis数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-字符串类型"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-散列类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 散列类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-列表类型"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 列表类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-集合类型"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-有序集合类型"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 有序集合类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶"><span class="nav-number">2.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、redis事务"><span class="nav-number">2.1.</span> <span class="nav-text">1、redis事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-命令"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-错误处理"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 错误处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-WATCH-命令"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 WATCH 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、过期时间"><span class="nav-number">2.2.</span> <span class="nav-text">2、过期时间</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -737,7 +745,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">789</span>
+    <span title="Site words total count">1.2k</span>
   
 </div>
 
