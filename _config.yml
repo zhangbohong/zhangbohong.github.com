@@ -113,7 +113,7 @@ qiniu:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo:
-    github: git@github.com:zhangbohong/zhangbohong.github.com.git,master
-    #github: https://gitee.com/zhangbohong/blog.git
-    #branch: master
+  repo: https://github.com/zhangbohong/zhangbohong.github.com.git
+  #github: git@github.com:zhangbohong/zhangbohong.github.com.git,master
+  #github: https://gitee.com/zhangbohong/blog.git
+  branch: master
