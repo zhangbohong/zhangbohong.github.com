@@ -123,18 +123,18 @@
 
 
 
-<meta name="description" content="入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
+<meta name="description" content="入门注意点  Redis的数据类型不支持类型嵌套，比如集合类型的每个元素都只能是字符串，不能是另外一个集合或者散列类型等。  1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis学习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/04/18/Redis学习笔记/index.html">
 <meta property="og:site_name" content="小兵张尕的博客">
-<meta property="og:description" content="入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
+<meta property="og:description" content="入门注意点  Redis的数据类型不支持类型嵌套，比如集合类型的每个元素都只能是字符串，不能是另外一个集合或者散列类型等。  1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-14T07:59:08.000Z">
+<meta property="og:updated_time" content="2019-05-19T15:42:10.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis学习笔记">
-<meta name="twitter:description" content="入门1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”,“ac”,“ad”   \x 匹配字符x，用于转义符号，如果要匹配“?”就需要使用\?">
+<meta name="twitter:description" content="入门注意点  Redis的数据类型不支持类型嵌套，比如集合类型的每个元素都只能是字符串，不能是另外一个集合或者散列类型等。  1、获得符合规则的键名列表 KEYS pattern  pattern支持glob通配符格式，见下表    符号 含义     ? 匹配一个字符   * 匹配任意个(包括0个字符)   [] 匹配括号中间的任一字符，可以使用“-”符号表示一个范围，如a[b-d]匹配“ab”">
 
 
 
@@ -400,7 +400,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k 字
+                  2.5k 字
                 </span>
               
 
@@ -416,7 +416,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -437,7 +437,11 @@
       
 
       
-        <h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a><center>入门</center></h1><h2 id="1、获得符合规则的键名列表"><a href="#1、获得符合规则的键名列表" class="headerlink" title="1、获得符合规则的键名列表"></a>1、获得符合规则的键名列表</h2><blockquote>
+        <h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a><center>入门</center></h1><p><strong>注意点</strong></p>
+<ol>
+<li>Redis的数据类型不支持类型嵌套，比如集合类型的每个元素都只能是字符串，不能是另外一个集合或者散列类型等。</li>
+</ol>
+<h2 id="1、获得符合规则的键名列表"><a href="#1、获得符合规则的键名列表" class="headerlink" title="1、获得符合规则的键名列表"></a>1、获得符合规则的键名列表</h2><blockquote>
 <p>KEYS pattern</p>
 </blockquote>
 <p>pattern支持glob通配符格式，见下表</p>
@@ -468,19 +472,68 @@
 </tbody>
 </table>
 <a id="more"></a>
-<h2 id="2、redis数据类型"><a href="#2、redis数据类型" class="headerlink" title="2、redis数据类型"></a>2、redis数据类型</h2><h3 id="2-1-字符串类型"><a href="#2-1-字符串类型" class="headerlink" title="2.1 字符串类型"></a>2.1 字符串类型</h3><h3 id="2-2-散列类型"><a href="#2-2-散列类型" class="headerlink" title="2.2 散列类型"></a>2.2 散列类型</h3><h3 id="2-3-列表类型"><a href="#2-3-列表类型" class="headerlink" title="2.3 列表类型"></a>2.3 列表类型</h3><ul>
+<h2 id="2、redis数据类型"><a href="#2、redis数据类型" class="headerlink" title="2、redis数据类型"></a>2、redis数据类型</h2><h3 id="2-1-字符串类型"><a href="#2-1-字符串类型" class="headerlink" title="2.1 字符串类型"></a>2.1 字符串类型</h3><ul>
+<li><p>SET key：设置键</p>
+</li>
+<li><p>Get key：获取键</p>
+</li>
+<li><p>INCR key : 递增数字</p>
+</li>
+<li><p>incrby key increment：增加指定的整数</p>
+</li>
+<li><p>decr key|decrby key decrement ： 减少指定的整数</p>
+</li>
+<li><p>Incrbyfloat key 2.7 :增加指定的浮点数</p>
+</li>
+<li><p>append key value：向尾部追加值</p>
+</li>
+<li><p>strlen key:获取字符串长度</p>
+</li>
+<li><p>mget key [key…]：同时获得多个键值</p>
+</li>
+</ul>
+<p><strong>位操作：</strong></p>
+<ul>
+<li><p>getbit key offset：获取该key的第N位二进制运算符，如果超出实际长度则默认为0</p>
+</li>
+<li><p>Setbit key offset value：替换第N位的二进制运算符，如果超出实际长度默认会自动将中间的二进制位设置为0，同理设置一个不存在的键的制定二进制位的值会自动将其前面的位赋值位0</p>
+</li>
+<li><p>Bitcount 获取字符串类型键中值是1的二进制位的个数</p>
+</li>
+</ul>
+<p>bitop or res key1 key2 ： 对多个字符串类型键进行位运算，并将结果存储在destkey参数指定的键中，bitop支持的运算操作有and，or，xor和not。</p>
+<h3 id="2-2-散列类型"><a href="#2-2-散列类型" class="headerlink" title="2.2 散列类型"></a>2.2 散列类型</h3><p><strong>散列类型不能嵌套其他的数据类型</strong></p>
+<ul>
+<li>hset key field value : 设置散列类型某个列的值</li>
+<li>hget key field value : 获取散列类型某个列的值</li>
+<li>hgetall key 获取散列类型所有的键和值</li>
+<li>hexists key field : 判断字段是否存在</li>
+<li>hsetnx key field ：当字段不存在时赋值 ，<strong>原子操作</strong></li>
+<li>hincrby key field increment：增加数字</li>
+<li>hdel key field [field…]：删除一个或多个字段</li>
+<li>hkeys key ：获取所有字段</li>
+<li>hvals key ：获取所有值</li>
+<li>hlen key ： 获取字段数量</li>
+</ul>
+<h3 id="2-3-列表类型"><a href="#2-3-列表类型" class="headerlink" title="2.3 列表类型"></a>2.3 列表类型</h3><ul>
 <li>LPUSH ： 向列表左边插入元素</li>
 <li>RPUSH ：向列表右边插入元素</li>
 <li>LPOP ： 从列表左边弹出元素</li>
 <li>RPOP ： 从列表右边弹出元素</li>
-<li>LRANGE ： 查看列表的键 lrange key start end</li>
+<li>LRANGE ： 查看列表的元素 lrange key start end</li>
 <li>LINSERT : 在某个元素前后插入数据 linsert key before|after pivot value </li>
 <li>LTRIM ： ltrim key srart end</li>
 <li>LINDEX ： 获取列表下表元素的值 lindex key index</li>
 <li>LSET ： 将索引为index的元素赋值为value lset key index value</li>
-<li>LREM ： 从右边删除第一个值为value的元素 lrem key -1 value </li>
+<li>llen ： 获取元素列表长度</li>
+<li>LREM ： 删除列表中前count个值为value的元素 lrem key count value </li>
 </ul>
-<h3 id="2-4-集合类型"><a href="#2-4-集合类型" class="headerlink" title="2.4 集合类型"></a>2.4 集合类型</h3><ul>
+<ol>
+<li>当count &gt; 0时会从列表左侧开始删除前count个值为value的元素</li>
+<li>当count &lt; 0时会从列表右侧开始删除前count个值为value的元素</li>
+<li>当count = 0时会删除所有值为value的元素<h3 id="2-4-集合类型"><a href="#2-4-集合类型" class="headerlink" title="2.4 集合类型"></a>2.4 集合类型</h3></li>
+</ol>
+<ul>
 <li>SADD ： 向集合插入元素</li>
 <li>SREM ： 删除集合中的元素</li>
 <li>SMEMBERS ： 获取集合中的所有元素</li>
@@ -489,11 +542,29 @@
 <li>SINTER ： 获取集合中相同的元素</li>
 <li>SUNION ： 获取集合的并集 </li>
 <li>CARD ：获取元素中的个数</li>
-<li>SDIFFERSTRE destination key ： 与SDIFF命令功能一样，区别是前者不会直接返回运算值，而是直接将结果存储在destination键中</li>
-<li>SINTERSTORE 和 SUNIONSTORE 命令与之类似</li>
-<li>SRANGMEMBER ： 随机获取集合中的一个元素<br>- <h3 id="2-5-有序集合类型"><a href="#2-5-有序集合类型" class="headerlink" title="2.5 有序集合类型"></a>2.5 有序集合类型</h3></li>
+<li>SDIFFSTORE destination key ： 与SDIFF命令功能一样，区别是前者不会直接返回运算值，而是直接将结果存储在destination键中，SINTERSTORE 和 SUNIONSTORE 命令与之类似</li>
+<li>SRANDMEMBER ： 随机获取集合中的一个元素<h3 id="2-5-有序集合类型"><a href="#2-5-有序集合类型" class="headerlink" title="2.5 有序集合类型"></a>2.5 有序集合类型</h3></li>
+<li>zadd key score member :增加元素</li>
+<li>zscore key member ：获取元素分数</li>
+<li>zrange key start stop [withscores]：按元素的分数从小到大返回索引从start到stop之间的所有元素（包含两端的元素），如果需要分数的话同时在尾部加上WITHSCORES,<strong>zrevrange</strong> 索引从大到小排序 </li>
+<li>zrangebyscore key min max [withscores]  [limit offset count]:获取分数之间从小到大的顺序<br>eg:zrevrangebyscore scoreboard 100 -inf withscores limit 0 3，从大到小</li>
+<li>zincrby key increment member:增加一个元素的分数</li>
+<li>zcard key ：获取元素中的数量</li>
+<li>zcount key min max : 获取指定分数范围内的元素个数</li>
+<li>zrem key member ： 删除一个或多个元素</li>
+<li>zremrangebyrank key start stop : 按照排名范围删除元素</li>
+<li>zremrangebyscore key min max ： 按照分数范围删除元素</li>
+<li>zrank key member ：获得元素的排名 zrevrank从大到小</li>
+<li>zinterstore destination numkeys key [key…]  [weight weight[weight…]  [aggergate SUM|MIN|MAX]</li>
 </ul>
-<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a><center>进阶</center></h1><h2 id="1、redis事务"><a href="#1、redis事务" class="headerlink" title="1、redis事务"></a>1、redis事务</h2><h3 id="1-1-命令"><a href="#1-1-命令" class="headerlink" title="1.1 命令"></a>1.1 命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MULIT // 事务开始</span><br><span class="line">SADD &quot;user:1&quot; 2</span><br><span class="line">SADD &quot;user:2&quot; 1</span><br><span class="line">EXEC  // 事务结束</span><br></pre></td></tr></table></figure>
+<ol>
+<li>当aggergate 时SUM时，destination键中元素的分数时每个参与计算的集合中该元素的分数的和；为MIN时，destination键中元素的分数时每个参与计算的集合中该元素的分数的最小值;为MAX时，destination键中元素的分数时每个参与计算的集合中该元素的分数的最大值</li>
+<li>weight表示每个集合在参与计算时元素的分数会被乘上该集合的权重</li>
+</ol>
+<ul>
+<li>zunionstore与上相同<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a><center>进阶</center></h1></li>
+</ul>
+<h2 id="1、redis事务"><a href="#1、redis事务" class="headerlink" title="1、redis事务"></a>1、redis事务</h2><h3 id="1-1-命令"><a href="#1-1-命令" class="headerlink" title="1.1 命令"></a>1.1 命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MULIT // 事务开始</span><br><span class="line">SADD &quot;user:1&quot; 2</span><br><span class="line">SADD &quot;user:2&quot; 1</span><br><span class="line">EXEC  // 事务结束</span><br></pre></td></tr></table></figure>
 <p>MULIT命令告诉Redis，我下面发给你的命令属于一个事务，你先不要执行，而是把它们暂存起来，当使用EXEC时，Redis会将等待执行的事务队列中的命令按发送顺序执行，返回值顺序和命令顺序相同。</p>
 <h3 id="1-2-错误处理"><a href="#1-2-错误处理" class="headerlink" title="1.2 错误处理"></a>1.2 错误处理</h3><ol>
 <li>语法错误：Redis2.6.5之前的版本会忽略语法错误的命令，然后执行事务中的其他命令；之后的版本只要有一个命令有语法错误，执行EXEC命令后Redis会直接返回错误，连语法正确的命令也不会执行。</li>
@@ -546,6 +617,20 @@
 <blockquote>
 <p>  事实上Redis 并不会准确的删除整个数据库中最久未被使用的键，而是每次从数据库中随机取3个键并删除这3个键中最久未被使用的键。3这个数字可以通过Redis配置文件中的maxmemory-samples参数设置。</p>
 </blockquote>
+<h2 id="4、排序"><a href="#4、排序" class="headerlink" title="4、排序"></a>4、排序</h2><h3 id="4-1-有序集合的排序"><a href="#4-1-有序集合的排序" class="headerlink" title="4.1 有序集合的排序"></a>4.1 有序集合的排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">multi</span><br><span class="line">zinterstore tempkey ...</span><br><span class="line">zrange tempkey</span><br><span class="line">del tempkey</span><br><span class="line">exce</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-SORT命令"><a href="#4-2-SORT命令" class="headerlink" title="4.2 SORT命令"></a>4.2 SORT命令</h3><p>sort key DESC limit 1 3</p>
+<h3 id="4-3-BY参数"><a href="#4-3-BY参数" class="headerlink" title="4.3 BY参数"></a>4.3 BY参数</h3><p>sort key by key:*-&gt;field desc</p>
+<p><strong>注意*</strong></p>
+<ol>
+<li><p>参考类型虽然支持散列类型，但是*只能在-&gt;符号的前面（即键名部分才有用），在-&gt;后字段部分会被当成字段名本身而不会作为占位符被元素的值替换，即常量名。但实际运行会发现一个有趣的效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sort sortbylist by somekey-&gt;somefield:*</span><br><span class="line">&quot;1&quot;</span><br><span class="line">&quot;2&quot;</span><br><span class="line">&quot;3&quot;</span><br><span class="line">&quot;4&quot;</span><br><span class="line">&quot;5&quot;</span><br></pre></td></tr></table></figure>
+<p>上面仅对元素本身进行了排序，原因是Redis判断参考键名是不是常量键名的方式是判断参考键中是否包含“*”，而somekey-&gt;somefield:*中包含“*”，所以不是常量名名，所以在排序的时候会对每个元素都读取somekey-&gt;somefield:*值，*不会被替换掉，无论是否能获取值，每个元素的参考键值是相同的，所以redis会按照元素本身的大小排序。</p>
+</li>
+<li><p>如果要对散列类型的键值通过其键值的value进行排序，需先将散列类型的键放到一个集合中，再排序。</p>
+</li>
+</ol>
+<h3 id="4-4-GET参数"><a href="#4-4-GET参数" class="headerlink" title="4.4 GET参数"></a>4.4 GET参数</h3><p>sort key by key-&gt;field desc get key-&gt;field [get key-field…]<br>get # 会返回元素本身的值</p>
+<h3 id="4-5-store参数"><a href="#4-5-store参数" class="headerlink" title="4.5 store参数"></a>4.5 store参数</h3><p>sort key by key-&gt;field desc get key-&gt;field [get key-field…]<br>get # store result<br>将排序后的结果保存在result键中，保存后的键为列表类型，如果键已经存在会覆盖，加上store参数后sort命令的返回值为结果的个数</p>
 
       
     </div>
@@ -752,7 +837,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、获得符合规则的键名列表"><span class="nav-number">1.1.</span> <span class="nav-text">1、获得符合规则的键名列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、redis数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">2、redis数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-字符串类型"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-散列类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 散列类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-列表类型"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 列表类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-集合类型"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-有序集合类型"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 有序集合类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶"><span class="nav-number">2.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、redis事务"><span class="nav-number">2.1.</span> <span class="nav-text">1、redis事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-命令"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-错误处理"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 错误处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-WATCH-命令"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 WATCH 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、过期时间"><span class="nav-number">2.2.</span> <span class="nav-text">2、过期时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、-缓存"><span class="nav-number">2.3.</span> <span class="nav-text">3、 缓存</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、获得符合规则的键名列表"><span class="nav-number">1.1.</span> <span class="nav-text">1、获得符合规则的键名列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、redis数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">2、redis数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-字符串类型"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-散列类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 散列类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-列表类型"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 列表类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-集合类型"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-有序集合类型"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 有序集合类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶"><span class="nav-number">2.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、redis事务"><span class="nav-number">2.1.</span> <span class="nav-text">1、redis事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-命令"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-错误处理"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 错误处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-WATCH-命令"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 WATCH 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、过期时间"><span class="nav-number">2.2.</span> <span class="nav-text">2、过期时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、-缓存"><span class="nav-number">2.3.</span> <span class="nav-text">3、 缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、排序"><span class="nav-number">2.4.</span> <span class="nav-text">4、排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-有序集合的排序"><span class="nav-number">2.4.1.</span> <span class="nav-text">4.1 有序集合的排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-SORT命令"><span class="nav-number">2.4.2.</span> <span class="nav-text">4.2 SORT命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-BY参数"><span class="nav-number">2.4.3.</span> <span class="nav-text">4.3 BY参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-GET参数"><span class="nav-number">2.4.4.</span> <span class="nav-text">4.4 GET参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-store参数"><span class="nav-number">2.4.5.</span> <span class="nav-text">4.5 store参数</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -786,7 +871,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.6k</span>
+    <span title="Site words total count">2.9k</span>
   
 </div>
 
