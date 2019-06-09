@@ -2,7 +2,7 @@
 title: Redis学习笔记
 date: 2019-04-18 21:24:22
 tags: 学习笔记
-categories: 学习笔记
+categories: Redis
 ---
 # <center>入门</center>
 **注意点**
@@ -207,6 +207,10 @@ get # 会返回元素本身的值
 sort key by key->field desc get key->field [get key-field...]
 get # store result
 将排序后的结果保存在result键中，保存后的键为列表类型，如果键已经存在会覆盖，加上store参数后sort命令的返回值为结果的个数
+
+----
+
+未完待续
 
 
     
